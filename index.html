@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(135deg, #1e88e5, #1565c0);
+            color: white;
+            padding: 2em 0;
+            text-align: center;
+            width: calc(100% - 220px); /* Adjust width to match the sections */
+            margin-left: 220px; /* Align with sections */
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            opacity: 0;
+            animation: fadeInUp 2s forwards;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            padding-top: 2em;
+            z-index: 100;
+        }
+        nav a {
+            color: #e0e0e0;
+            padding: 15px 25px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        nav a:hover {
+            background-color: #424242;
+        }
+        .section {
+            padding: 2em;
+            margin: 2em 0;
+            max-width: 1200px;
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: fadeIn 1.5s forwards;
+            opacity: 0;
+            margin-left: 220px; /* Add margin-left to accommodate fixed nav */
+        }
+        .section:nth-child(even) {
+            background-color: #2e2e2e;
+        }
+        ul {
+            list-style-type: disc; /* This is the default style for bullets */
+            margin-left: 20px; /* Indent the list */
+        }
+        .sub {
+            padding: 2em;
+            margin: 2em auto;
+            max-width: 1200px;
+            background-color: #57555546;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            position: relative;
+            animation: fadeIn 1.5s forwards;
+            opacity: 0; 
+        }
+        .section h2 {
+            text-decoration: underline;
+            font-size: 2em;
+            color: #42a5f5;
+            margin-top: 0;
+            margin-bottom: 1em;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .portfolio-item {
+            display: inline-block;
+            margin: 1em;
+            padding: 1.5em;
+            border: 1px solid #333;
+            width: calc(33.333% - 2em);
+            box-sizing: border-box;
+            background-color: #2e2e2e;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.7);
+        }
+        footer {
+            background: linear-gradient(135deg, #1e88e5, #1565c0);
+            color: white;
+            text-align: center;
+            padding: 1.5em 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            width: calc(100% - 220px); /* Adjust width to match the sections */
+            margin-left: 220px; /* Align with sections */
+            box-sizing: border-box; 
+        }
+        a {
+            color: #42a5f5;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #64b5f6;
+        }
+        .resume-link {
+            font-size: 1.2em;
+            color: #42a5f5;
+            text-decoration: none;
+            border: 2px solid #42a5f5;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .resume-link:hover {
+            background-color: #42a5f5;
+            color: white;
+        }
+        .fixed-image {
+            display: block;
+            transition: transform 0.3s ease;
+            margin: 0 auto;
+           width: 300px;
+            height: 300px; /* Maintain aspect ratio */
+            border: 2px solid #42a5f5; /* Light border */
+            border-radius: 200px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+           align-items: center;
+            /* Adjust width to match the sections */
+            margin-left: 600px; /* Align with sections */
+            box-sizing: border-box; 
+            margin-top: 20px;
+        }
+        .fixed-image:hover {
+            transform: scale(1.2);
+        }
+        .sub-image {
+            display: block;
+            transition: transform 0.3s ease;
+            margin: 0 auto;
+           width: 300px;
+            height: 300px; /* Maintain aspect ratio */
+            border: 2px solid #42a5f5; /* Light border */
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+           align-items: center;
+            /* Adjust width to match the sections */
+            margin-left: 350px; /* Align with sections */
+            box-sizing: border-box; 
+            margin-top: 20px;
+        }
+        .sub-image:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Syed Ismail Ahmed</h1>
+    </header>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#github">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+        <a href="#resume">Resume</a>
+    </nav>
+    <img src="profilepic.jpeg" alt="My Photo" class="fixed-image"> <!-- Add your image here -->
+    <div id="about" class="section">
+        <h2>About Me</h2>
+        <p>I am a dedicated Computer Science student at FAST NUCES, with a strong passion for exploring various programming languages and honing my technical skills. My academic journey has been marked by a profound interest in computer science and coding, and I am enthusiastic about the myriad learning opportunities this field presents.
+            I have hands-on experience with C and C++, having worked on several projects utilizing these languages. My proficiency in these languages has allowed me to develop robust and efficient solutions to complex problems. Additionally, I have a working knowledge of Python, which has further expanded my programming capabilities and versatility.
+            One of my primary areas of interest is artificial intelligence. I am particularly excited about the new opportunities and advancements in this field and am eager to contribute to its growth and development. The potential of AI to transform industries and improve lives drives my passion and commitment to this area of study.
+            I am enthusiastic about continuing to learn and grow as a computer scientist, and I look forward to the exciting challenges and opportunities that lie ahead.</p>
+    </div>
+    <div id="skills" class="section">
+        <h2>Skills</h2>
+        <ul>
+            <li>Python</li>
+            <li>C++</li>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>C</li>
+        </ul>
+    </div>
+    <div id="github" class="section">
+        <h2>Projects</h2>
+        <div class="sub">
+            <h3>Plants Vs Zombies</h3>
+            <img src="plantsvszombies.png" alt="Photo" class="sub-image">
+        <p>In this project, I developed a simple yet engaging Plants vs Zombies game using C++ and SFML. Leveraging SFML for graphical user interface (GUI) elements, I created an interactive experience where players strategically place plants to fend off waves of approaching zombies. The game features a variety of plant types and zombie characters, each with unique behaviors, making for a dynamic and challenging gameplay experience. This project highlights my ability to integrate SFML for effective visual and interactive elements in a game setting.</p>
+        <p><a href="https://github.com/ismailingg/PlantsVsZombies"class="resume-link">View Project</a></p>
+        </div>
+        <div class="sub">
+            <h3>Snakes and Ladders 2.0</h3>
+            <img src="snakesandladder.png" alt="Photo" class="sub-image">
+            <p>I developed Snakes and Ladders 2.0, a modern twist on the classic board game, using C. 
+                This enhanced version introduces new rules and gameplay mechanics, adding complexity and excitement to the traditional experience. In a unique twist, the player who reaches the final square must win a game of hangman to secure their victory, adding an extra layer of challenge and fun. 
+                This project showcases my ability to innovate classic games by incorporating new features and combining different game genres.</p>
+            <p><a href="https://github.com/ismailingg/snakes-and-ladders-2.0"class="resume-link">View Project</a></p>
+            </div>
+         <div class="sub">
+                <h3>Hangman: Sports Edition</h3>
+                <img src="hangman.png" alt="Photo" class="sub-image">
+                <p>I created a Hangman game in C where players guess the names of various sports. This project involves the classic word-guessing mechanics of Hangman, with a focus on sports terminology, providing an educational and entertaining experience. The game challenges players' knowledge of sports while offering a fun and engaging way to test their guessing skills. This project demonstrates my ability to develop classic games with a specific thematic focus, enhancing the traditional gameplay with a targeted twist.</p>
+                <p><a href="https://github.com/ismailingg/Hangman"class="resume-link">View Project</a></p>
+                </div>    
+    </div>
+    <div id="experience" class="section">
+        <h2>Experience</h2>
+        <p>Software Engineering Fellow at Headstarter AI</p>
+        <p>Event Management Specialist at Procom 2024</p>
+    </div>
+    <div id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Email: cityismailahmed@gmail.com</p>
+        <p><a href="https://www.linkedin.com/in/syed-ismail-ahmed-8650a6290">linkedin</a></p>
+        <p><a href="https://github.com/ismailingg">GitHub Profile</a></p>
+    </div>
+    <div id="resume" class="section">
+        <h2>Resume</h2>
+        <p>To view or download my resume, please click the link below:</p>
+        <a href="https://drive.google.com/file/d/1VHoJ6V-aLfMF_cMRoQGYGCF-PmIhY45T/view?usp=sharing" class="resume-link" download>Download Resume</a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Syed Ismail Ahmed. All rights reserved.</p>
+    </footer>
+</body>
+</html>
